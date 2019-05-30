@@ -1,9 +1,9 @@
 {
-  "name": "slate-suggestions",
-  "description": "A Slate plugin to display suggestions.",
-  "version": "0.4.0",
+  "name": "slate-autocomplete",
+  "description": "A Slate plugin to display autocomplete suggestions.",
+  "version": "0.5.0",
   "license": "MIT",
-  "repository": "git://github.com/oozou/slate-suggestions.git",
+  "repository": "git://github.com/FedeLochbaum/slate-suggestions.git",
   "main": "./dist/index.js",
   "scripts": {
     "clean": "rm -rf ./dist ./node_modules",
@@ -20,10 +20,8 @@
   },
   "dependencies": {
     "react": "^15.3.1",
-    "react-portal": "^3.0.0"
-  },
-  "peerDependencies": {
-    "slate": "^0.x.x"
+    "react-portal": "^3.0.0",
+    "slate": "^0.44.12"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
@@ -41,7 +39,9 @@
     "npm-run-all": "^2.3.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "slate": "^0.16.1",
+    "slate": "^0.44.12",
+    "slate-hyperscript": "0.11.28",
+    "slate-react": "^0.21.18",
     "watchify": "^3.7.0"
   },
   "keywords": [
