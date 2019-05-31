@@ -1,16 +1,17 @@
 
-<h3 align="center"><code>slate-suggestions</code></h3>
+<h3 align="center"><code>slate-autocomplete</code></h3>
 
-A [**Slate**](https://github.com/ianstormtaylor/slate) plugin to suggestion replacements or actions based on input. Useful for implementing "mention" or other suggestion based behaviors.
+A [**Slate**](https://github.com/ianstormtaylor/slate) plugin to suggestion replacements or actions based on input. Useful for implementing autocomplete suggestions by node type.
 
-![](./example/demo.gif)
+<p align="center"><img src="./example/demo.gif"></p>
 
 ---
 
 ### Install
 
 ```
-npm install --save slate-suggestions
+TODO: udpate this
+npm install --save slate-suggestions 
 ```
 
 _You will need to have installed `slate` as a dependency already._
@@ -77,8 +78,8 @@ Option | Type | Description
 Clone the repository and then run:
 
 ```
-npm install
-npm run watch
+yarn
+yarn run watch
 ```
 
 And open the example page in your browser:
@@ -87,14 +88,3 @@ And open the example page in your browser:
 http://localhost:8888/
 ```
 
----
-
-### License
-
-Copyright &copy; 2016, [Oozou](http://oozou.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
