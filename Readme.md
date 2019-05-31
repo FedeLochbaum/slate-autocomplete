@@ -3,7 +3,7 @@
 
 A [**Slate**](https://github.com/ianstormtaylor/slate) plugin to suggestion replacements or actions based on input. Useful for implementing autocomplete suggestions by node type.
 
-![](./example/demo.gif)
+<p align="center"><img src="./example/demo.gif"></p>
 
 ---
 
