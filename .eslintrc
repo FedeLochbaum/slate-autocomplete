@@ -4,7 +4,7 @@
     "react"
   ],
   "settings": {
-    "import/extensions": [".js", ".jsx"]
+    "import/extensions": [".js"]
   },
   "parser": "babel-eslint",
   "parserOptions": {
@@ -28,7 +28,6 @@
     "dot-location": ["error", "property"],
     "dot-notation": ["error", { "allowKeywords": true }],
     "eol-last": "error",
-    "func-style": ["error", "declaration"],
     "import/export": "error",
     "import/namespace": "error",
     "import/newline-after-import": "error",

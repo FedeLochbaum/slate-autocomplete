@@ -49,7 +49,7 @@
     "browserify": "^13.0.1",
     "eslint": "4.x",
     "eslint-plugin-import": "^1.10.2",
-    "eslint-plugin-react": "^5.2.2",
+    "eslint-plugin-react": "^7.13.0",
     "gh-pages": "^0.11.0",
     "http-server": "^0.9.0",
     "npm-run-all": "^2.3.0",
