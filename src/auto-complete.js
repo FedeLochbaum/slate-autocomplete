@@ -31,13 +31,8 @@ const autocompletePluginCreator = opts => {
     onKeyDown,
     component: props => (
       renderPortal ?
-        renderPortal(Portal, { ...props, ...opts, callback })
-        :
-        (<Portal
-          {...props}
-          {...opts}
-          callback={callback}
-         />)
+        renderPortal(Portal, { ...props, ...opts, callback }) :
+        (<Portal {...props} {...opts} callback={callback} />)
     )
   }
 }
