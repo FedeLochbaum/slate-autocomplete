@@ -20,7 +20,7 @@
   },
   "jest": {
     "setupFiles": [
-      "<rootDir>/src/jest-setup.js"
+      "<rootDir>/config/jest/jest-setup.js"
     ],
     "moduleNameMapper": {
       "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
