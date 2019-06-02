@@ -1,108 +1,26 @@
-import SuggestionsPlugin from '..'
+/* eslint-disable import/no-unresolved */
 import React from 'react'
 import ReactDOM from 'react-dom'
-import initialState from './state.json'
-import { Editor, Raw } from 'slate'
+import { Editor } from 'slate'
+import { compose, withState, withHandlers } from 'recompose'
+import { handlers } from './handlers'
+import { prop } from 'ramda'
+import countriesAutoCompletePlugin from './countries-auto-complete-plugin'
 
-function getCurrentWord(text, index, initialIndex) {
-  if (index === initialIndex) {
-    return { start: getCurrentWord(text, index - 1, initialIndex), end: getCurrentWord(text, index + 1, initialIndex) }
-  }
-  if (text[index] === " " || text[index] === "@" || text[index] === undefined) {
-    return index
-  }
-  if (index < initialIndex) {
-    return getCurrentWord(text, index - 1, initialIndex)
-  }
-  if (index > initialIndex) {
-    return getCurrentWord(text, index + 1, initialIndex)
-  }
-}
+const plugins = [countriesAutoCompletePlugin]
 
-const suggestions = [
-  {
-    key: 'Jon Snow',
-    value: '@Jon Snow',
-    suggestion: '@Jon Snow' // Can be either string or react component
-  },
-  {
-    key: 'Daenerys Targaryen',
-    value: '@Daenerys Targaryen',
-    suggestion: '@Daenerys Targaryen'
-  },
-  {
-    key: 'Cersei Lannister',
-    value: '@Cersei Lannister',
-    suggestion: '@Cersei Lannister'
-  },
-  {
-    key: 'Tyrion Lannister',
-    value: '@Tyrion Lannister',
-    suggestion: '@Tyrion Lannister'
-  },
-]
+const Example = ({ value, onChange }) => (
+  <React.Fragment>
+    <Editor
+      value={value}
+      plugins={plugins}
+      onChange={onChange}
+    />
+    {plugins.filter(({ component }) => !!component).map(({ component: Comp }, index) => <Comp key={index} />)}
+  </React.Fragment>
+)
 
-class Example extends React.Component {
-
-  constructor() {
-    super()
-
-    this.suggestionsPlugin = new SuggestionsPlugin({
-      trigger: '@',
-      capture: /@([\w]*)/,
-      suggestions,
-      onEnter: (suggestion) => {
-        const { state } = this.state
-
-        const { anchorText, anchorOffset } = state
-
-        const text = anchorText.text
-
-        let index = { start: anchorOffset - 1, end: anchorOffset }
-
-        if (text[anchorOffset - 1] !== '@') {
-          index = getCurrentWord(text, anchorOffset - 1, anchorOffset - 1)
-        }
-
-        const newText = `${text.substring(0, index.start)}${suggestion.value} `
-
-        return state
-          .transform()
-          .deleteBackward(anchorOffset)
-          .insertText(newText)
-          .apply()
-      }
-    })
-
-    this.plugins = [
-      this.suggestionsPlugin
-    ]
-  }
-
-  state = {
-    state: Raw.deserialize(initialState, { terse: true })
-  };
-
-  onChange = (state) => {
-    this.setState({ state })
-  }
-
-  render = () => {
-    const { SuggestionPortal } = this.suggestionsPlugin
-    return (
-      <div>
-        <Editor
-          onChange={this.onChange}
-          plugins={this.plugins}
-          state={this.state.state}
-        />
-        <SuggestionPortal
-          state={this.state.state}
-        />
-      </div>
-    )
-  }
-}
+export default compose(withState('value', 'setValue', prop('value')), withHandlers(handlers))(Example)
 
 const example = <Example />
 const root = document.body.querySelector('main')
