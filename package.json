@@ -1,9 +1,9 @@
 {
-  "name": "slate-autocomplete",
+  "name": "slate-auto-complete",
   "description": "A Slate plugin to display autocomplete suggestions.",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "license": "MIT",
-  "repository": "git://github.com/FedeLochbaum/slate-suggestions.git",
+  "repository": "git://github.com/FedeLochbaum/slate-auto-complete.git",
   "main": "./dist/index.js",
   "scripts": {
     "clean": "rm -rf ./dist ./node_modules",
