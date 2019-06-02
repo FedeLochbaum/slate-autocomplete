@@ -13,14 +13,41 @@
     "lint": "eslint 'src/**/*.js' 'example/index.js'",
     "prepublish": "npm run dist",
     "start": "http-server ./example -p 8888",
-    "test": "npm run lint",
+    "test": "jest",
     "watch": "npm-run-all --parallel --print-label watch:dist watch:example start",
     "watch:dist": "babel ./src --out-dir ./dist --watch",
     "watch:example": "watchify ./example/index.js --debug --transform babelify --outfile ./example/build.js"
   },
+  "jest": {
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "collectCoverageFrom": [
+      "src/{!(node_modules)/}**/*.js"
+    ],
+    "coverageDirectory": "./coverage/",
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/(*.)(spec|test).js?(x)",
+      "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
+    ],
+    "testEnvironment": "node",
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/css-transform.js",
+      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/file-transform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+    ]
+  },
   "dependencies": {
+    "babel-jest": "^24.8.0",
     "classnames": "^2.2.6",
+    "enzyme": "^3.9.0",
     "escape-string-regexp": "^2.0.0",
+    "jest": "^24.8.0",
     "ramda": "^0.26.1",
     "react": "^15.3.1",
     "react-portal": "^3.0.0",
@@ -51,6 +78,7 @@
     "babel-eslint": "8",
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
+    "css-loader": "^2.1.1",
     "eslint": "^5.16.0",
     "eslint-plugin-import": "^1.10.2",
     "eslint-plugin-react": "^7.13.0",
@@ -62,6 +90,7 @@
     "slate": "^0.44.12",
     "slate-hyperscript": "0.11.28",
     "slate-react": "^0.21.18",
+    "style-loader": "^0.23.1",
     "watchify": "^3.7.0"
   },
   "keywords": [

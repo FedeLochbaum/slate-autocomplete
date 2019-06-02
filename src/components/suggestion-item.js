@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import styles from './suggestion-item.scss'
 import HighlightText from './highlight-text'
+import styles from './suggestion-item.scss'
 
 class SuggestionItem extends Component {
   onClick = event => {
