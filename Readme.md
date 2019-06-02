@@ -1,5 +1,5 @@
 
-<h3 align="center"><code>slate-autocomplete</code></h3>
+<h3 align="center"><code>slate-auto-complete</code></h3>
 
 A [**Slate**](https://github.com/ianstormtaylor/slate) plugin to suggestion replacements or actions based on input. Useful for implementing autocomplete suggestions by node type.
 
