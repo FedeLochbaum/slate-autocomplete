@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-closing-bracket-location */
-import React from 'react'
+import React, { Component } from 'react'
 import { isEmpty, isEmptyObject } from '../utils/object.js'
 import { Portal } from 'react-portal'
 import { Key } from '../utils/constants'
@@ -8,9 +8,12 @@ import SuggestionItem from './suggestion-item'
 
 import styles from './suggestion-portal.scss'
 
+const VISIBLE = 'visible'
+const HIDDEN = 'hidden'
+
 const isSelectKey = keyCode => keyCode === Key.ENTER || keyCode === Key.TAB
 
-class SuggestionPortal extends React.Component {
+class SuggestionPortal extends Component {
   contentRef = React.createRef()
 
   state = { filteredSuggestions: [] }
@@ -105,7 +108,7 @@ class SuggestionPortal extends React.Component {
     return !isEmptyObject(editor) && !isEmptyObject(editor.currentPath()) && shouldHandleNode(editor, editor.currentBlock())
   }
 
-  isOpen = () => this.contentRef.current.style.visibility === 'visible'
+  isOpen = () => this.contentRef.current.style.visibility === VISIBLE
 
   adjustPosition = () => {
     const menu = this.contentRef.current
@@ -123,11 +126,11 @@ class SuggestionPortal extends React.Component {
   }
   openPortal = () => {
     const menu = this.contentRef.current
-    menu.style.visibility = 'visible'
+    menu.style.visibility = VISIBLE
   }
   closePortal = () => {
     const menu = this.contentRef.current
-    menu.style.visibility = 'hidden'
+    menu.style.visibility = HIDDEN
   }
 
   render = () => {
