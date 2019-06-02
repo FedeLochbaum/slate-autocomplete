@@ -13,19 +13,45 @@
     "lint": "eslint 'src/**/*.js' 'example/index.js'",
     "prepublish": "npm run dist",
     "start": "http-server ./example -p 8888",
-    "test": "npm run lint",
+    "test": "jest",
     "watch": "npm-run-all --parallel --print-label watch:dist watch:example start",
     "watch:dist": "babel ./src --out-dir ./dist --watch",
     "watch:example": "watchify ./example/index.js --debug --transform babelify --outfile ./example/build.js"
   },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/config/jest/jest-setup.js"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/css-transform.js",
+      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/file-transform.js"
+    },
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/dist/"
+    ]
+  },
   "dependencies": {
+    "@types/enzyme": "^3.9.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "babel-jest": "^24.8.0",
+    "classnames": "^2.2.6",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.2",
+    "escape-string-regexp": "^2.0.0",
+    "jest": "^24.8.0",
+    "jest-cli": "^24.8.0",
+    "ramda": "^0.26.1",
     "react": "^15.3.1",
     "react-portal": "^3.0.0",
-    "slate": "^0.44.12"
+    "recompose": "^0.30.0",
+    "slate": "^0.44.12",
+    "typescript": "^3.5.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-proposal-decorators": "^7.0.0",
     "@babel/plugin-proposal-do-expressions": "^7.0.0",
@@ -42,14 +68,15 @@
     "@babel/plugin-proposal-throw-expressions": "^7.0.0",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-syntax-import-meta": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "8",
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
-    "eslint": "4.x",
+    "css-loader": "^2.1.1",
+    "eslint": "^5.16.0",
     "eslint-plugin-import": "^1.10.2",
-    "eslint-plugin-react": "^5.2.2",
+    "eslint-plugin-react": "^7.13.0",
     "gh-pages": "^0.11.0",
     "http-server": "^0.9.0",
     "npm-run-all": "^2.3.0",
@@ -58,6 +85,7 @@
     "slate": "^0.44.12",
     "slate-hyperscript": "0.11.28",
     "slate-react": "^0.21.18",
+    "style-loader": "^0.23.1",
     "watchify": "^3.7.0"
   },
   "keywords": [
