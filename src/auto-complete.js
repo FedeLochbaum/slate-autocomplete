@@ -16,6 +16,11 @@ const autocompletePluginCreator = opts => {
     return next()
   }
 
+  const onChange = (editor, next) => {
+    callback.editor = editor
+    next()
+  }
+
   const onKeyDown = (event, editor, next) => {
     const { closePortal, isOpen } = callback
     if (matchTrigger(editor, shouldHandleNode)) {

@@ -4,7 +4,7 @@ import HighlightText from './highlight-text'
 
 class SuggestionItem extends Component {
   onClick = event => {
-    const { suggestion, callback: { closePortal, editor, onEnter } } = this.props
+    const { suggestion, callback: { closePortal, onEnter, editor } } = this.props
     event.preventDefault()
     event.stopPropagation()
     if (editor) {
@@ -17,7 +17,6 @@ class SuggestionItem extends Component {
 
   currentText = () => {
     const { callback: { editor } } = this.props
-
     return editor && editor.currentPath() ? editor.currentText().text : ''
   }
 

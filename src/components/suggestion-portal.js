@@ -101,8 +101,8 @@ class SuggestionPortal extends React.Component {
   }
 
   matchTrigger = () => {
-    const { editorRef: { current }, shouldHandleNode } = this.props
-    return !isEmptyObject(current) && !isEmptyObject(current.currentPath()) && shouldHandleNode(current, current.currentBlock())
+    const { callback: { editor }, shouldHandleNode } = this.props
+    return !isEmptyObject(editor) && !isEmptyObject(editor.currentPath()) && shouldHandleNode(editor, editor.currentBlock())
   }
 
   isOpen = () => this.contentRef.current.style.visibility === 'visible'
@@ -132,7 +132,6 @@ class SuggestionPortal extends React.Component {
 
   render = () => {
     const { filteredSuggestions, selectedIndex } = this.state
-
     return (
       <Portal isOpened>
         <div ref={this.contentRef} className={styles.suggestionPortal}>
