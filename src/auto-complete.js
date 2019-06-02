@@ -1,8 +1,9 @@
 import React from 'react'
-import Portal from './suggestion-portal'
+import Portal from './components/suggestion-portal'
+import { currentNode, currentPath } from './utils/slate-utils'
 
 const matchTrigger = (editor, shouldHandleNode) =>
-  editor.currentPath() && shouldHandleNode(editor, editor.currentBlock())
+  currentPath(editor) && shouldHandleNode(editor, currentNode(editor))
 
 const autocompletePluginCreator = opts => {
   const { shouldHandleNode, onEnter, renderPortal } = opts

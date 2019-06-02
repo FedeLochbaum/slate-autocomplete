@@ -108,7 +108,6 @@
     "react/react-in-jsx-scope": "error",
     "react/self-closing-comp": "error",
     "react/sort-prop-types": "error",
-    "react/wrap-multilines": "error",
     "rest-spread-spacing": ["error", "never"],
     "semi": ["error", "never"],
     "space-before-blocks": "error",

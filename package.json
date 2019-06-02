@@ -19,8 +19,12 @@
     "watch:example": "watchify ./example/index.js --debug --transform babelify --outfile ./example/build.js"
   },
   "dependencies": {
+    "classnames": "^2.2.6",
+    "escape-string-regexp": "^2.0.0",
+    "ramda": "^0.26.1",
     "react": "^15.3.1",
     "react-portal": "^3.0.0",
+    "recompose": "^0.30.0",
     "slate": "^0.44.12"
   },
   "devDependencies": {
