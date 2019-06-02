@@ -17,6 +17,7 @@ const suggestions = [
 
 export default AutocompletePlugin({
   suggestions,
+  resultSize: 5,
   shouldHandleNode: (editor, { type }) => true,
   onEnter: (suggestion, editor) => {
     replaceCurrentText(editor, suggestion)

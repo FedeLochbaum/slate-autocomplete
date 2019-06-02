@@ -30,7 +30,7 @@ class SuggestionPortal extends Component {
     callback.updateFilteredSuggestion = this.updateFilteredSuggestion
     this.state = {
       selectedIndex: 0,
-      filteredSuggestions: filterSuggestions ? filterSuggestions(suggestions) : suggestions,
+      filteredSuggestions: (filterSuggestions ? filterSuggestions(suggestions) : suggestions).slice(0, callback.resultSize),
     }
     callback.suggestion = this.state.filteredSuggestions[this.state.selectedIndex]
   }
@@ -96,11 +96,11 @@ class SuggestionPortal extends Component {
   }
 
   getFilteredSuggestions = editor => {
-    const { suggestions, filterSuggestions } = this.props
+    const { callback: { resultSize }, suggestions, filterSuggestions } = this.props
     const lowerCaseWord = editor.currentText().text.toLowerCase()
 
     const currentSuggestions = (suggestions.filter(suggestion => suggestion.toLowerCase().indexOf(lowerCaseWord) !== -1 && suggestion.toLowerCase() !== lowerCaseWord))
-    return filterSuggestions ? filterSuggestions(currentSuggestions) : currentSuggestions
+    return (filterSuggestions ? filterSuggestions(currentSuggestions) : currentSuggestions).slice(0, resultSize)
   }
 
   matchTrigger = () => {

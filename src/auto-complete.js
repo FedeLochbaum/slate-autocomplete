@@ -6,8 +6,8 @@ const matchTrigger = (editor, shouldHandleNode) =>
   currentPath(editor) && shouldHandleNode(editor, currentNode(editor))
 
 const autocompletePluginCreator = opts => {
-  const { shouldHandleNode, onEnter, renderPortal } = opts
-  const callback = { onEnter }
+  const { shouldHandleNode, onEnter, renderPortal, resultSize } = opts
+  const callback = { onEnter, resultSize }
 
   const shouldNodeComponentUpdate = (previousProps, props, editor, next) => {
     if (matchTrigger(editor, shouldHandleNode)) {
