@@ -16,7 +16,9 @@
     "test": "jest",
     "watch": "npm-run-all --parallel --print-label watch:dist watch:example start",
     "watch:dist": "babel ./src --out-dir ./dist --watch",
-    "watch:example": "watchify ./example/index.js --debug --transform babelify --outfile ./example/build.js"
+    "watch:example": "watchify ./example/index.js --debug --transform babelify --outfile ./example/build.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "jest": {
     "setupFiles": [
@@ -86,7 +88,12 @@
     "slate-hyperscript": "0.11.28",
     "slate-react": "^0.21.18",
     "style-loader": "^0.23.1",
-    "watchify": "^3.7.0"
+    "watchify": "^3.7.0",
+    "@storybook/react": "^5.0.11",
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-links": "^5.0.11",
+    "@storybook/addons": "^5.0.11",
+    "babel-loader": "^8.0.6"
   },
   "keywords": [
     "slate"
