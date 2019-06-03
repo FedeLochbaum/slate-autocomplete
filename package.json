@@ -35,6 +35,8 @@
     ]
   },
   "dependencies": {
+    "@emotion/core": "^10.0.10",
+    "@emotion/styled": "^10.0.11",
     "@types/enzyme": "^3.9.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "babel-jest": "^24.8.0",
@@ -42,6 +44,7 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.2",
     "escape-string-regexp": "^2.0.0",
+    "immutable": "^4.0.0-rc.12",
     "jest": "^24.8.0",
     "jest-cli": "^24.8.0",
     "ramda": "^0.26.1",
@@ -72,7 +75,12 @@
     "@babel/plugin-syntax-import-meta": "^7.0.0",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-links": "^5.0.11",
+    "@storybook/addons": "^5.0.11",
+    "@storybook/react": "^5.0.11",
     "babel-eslint": "8",
+    "babel-loader": "^8.0.6",
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
     "css-loader": "^2.1.1",
@@ -88,12 +96,7 @@
     "slate-hyperscript": "0.11.28",
     "slate-react": "^0.21.18",
     "style-loader": "^0.23.1",
-    "watchify": "^3.7.0",
-    "@storybook/react": "^5.0.11",
-    "@storybook/addon-actions": "^5.0.11",
-    "@storybook/addon-links": "^5.0.11",
-    "@storybook/addons": "^5.0.11",
-    "babel-loader": "^8.0.6"
+    "watchify": "^3.7.0"
   },
   "keywords": [
     "slate"
