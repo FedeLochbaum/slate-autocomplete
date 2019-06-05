@@ -22,18 +22,6 @@
     "build-storybook": "build-storybook"
   },
   "jest": {
-    "setupFiles": [
-      "<rootDir>/jest-config/jest-setup.js"
-    ],
-    "moduleNameMapper": {
-      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.css$": "<rootDir>/jest-config/css-transform.js",
-      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/jest-config/file-transform.js"
-    },
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/dist/"
-    ]
   },
   "dependencies": {
     "@emotion/core": "^10.0.10",
