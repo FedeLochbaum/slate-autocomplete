@@ -6,6 +6,7 @@
   "repository": "git://github.com/FedeLochbaum/slate-auto-complete.git",
   "main": "./dist/index.js",
   "scripts": {
+    "eject": "react-scripts eject",
     "clean": "rm -rf ./dist ./node_modules",
     "dist": "babel ./src --out-dir ./dist",
     "example": "browserify ./example/index.js --debug --transform babelify > ./example/build.js",
@@ -50,6 +51,7 @@
     "ramda": "^0.26.1",
     "react": "^15.3.1",
     "react-portal": "^3.0.0",
+    "react-scripts": "^3.0.1",
     "recompose": "^0.30.0",
     "slate": "^0.44.12",
     "typescript": "^3.5.1"
@@ -89,9 +91,12 @@
     "eslint-plugin-react": "^7.13.0",
     "gh-pages": "^0.11.0",
     "http-server": "^0.9.0",
+    "mini-css-extract-plugin": "^0.7.0",
+    "node-sass": "^4.12.0",
     "npm-run-all": "^2.3.0",
     "react": "^15.3.1",
     "react-dom": "^15.2.1",
+    "sass-loader": "^7.1.0",
     "slate": "^0.44.12",
     "slate-hyperscript": "0.11.28",
     "slate-react": "^0.21.18",
