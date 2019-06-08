@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import HighlightText from './highlight-text'
 import styles from './suggestion-item.scss'
+import { currentPath, currentText } from '../utils/slate-utils'
 
 class SuggestionItem extends Component {
   onClick = event => {
@@ -17,7 +18,7 @@ class SuggestionItem extends Component {
 
   currentText = () => {
     const { callback: { editor } } = this.props
-    return editor && editor.currentPath() ? editor.currentText().text : ''
+    return editor && currentPath(editor) ? currentText(editor).text : ''
   }
 
   render = () => {

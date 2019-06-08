@@ -3,15 +3,14 @@
 
 A [**Slate**](https://github.com/ianstormtaylor/slate) plugin to suggestion replacements or actions based on input. Useful for implementing autocomplete suggestions by node type.
 
-<p align="center"><img src="./example/demo.gif"></p>
+<p align="center"><img src="./src/example/demo.gif"></p>
 
 ---
 
 ### Install
 
 ```
-TODO: udpate this
-npm install --save slate-suggestions 
+
 ```
 
 _You will need to have installed `slate` as a dependency already._
@@ -21,45 +20,7 @@ _You will need to have installed `slate` as a dependency already._
 ### Usage
 
 ```js
-import SuggestionsPlugin from 'slate-suggestions'
-import { Editor } from 'slate'
 
-const suggestions = [
-  {
-    key: 'jon-snow',
-    value: '@Jon Snow',
-    suggestion: '@Jon Snow' // Can be string or react component
-  },
-  // Some other suggestions
-]
-
-const suggestionsPlugin = SuggestionsPlugin({
-  trigger: '@',
-  capture: /@([\w]*)/,
-  suggestions,
-  onEnter: (suggestion) => {
-    // Modify your state up to your use-cases
-    return modifiedState
-  }
-})
-
-// Extract portal component from the plugin
-const { SuggestionPortal } = suggestionPlugin
-
-// Add the plugin to your set of plugins...
-const plugins = [
-  suggestionPlugin
-]
-
-// And later pass it into the Slate editor...
-<Editor
-  ...
-  plugins={plugins}
-/>
-// And add portal component together with the editor
-<SuggestionPortal
-  state={this.state.state}
-/>
 ```
 
 Option | Type | Description
@@ -79,12 +40,11 @@ Clone the repository and then run:
 
 ```
 yarn
-yarn run watch
+yarn storybook
 ```
 
 And open the example page in your browser:
 
 ```
-http://localhost:8888/
+http://localhost:6006/
 ```
-

@@ -2,7 +2,7 @@ import React from 'react'
 import Portal from './suggestion-portal'
 import { mount } from 'enzyme'
 import { Value, Editor } from 'slate'
-import { replaceCurrentText } from '../utils/slate-utils'
+import { replaceCurrentText, currentText } from '../utils/slate-utils'
 import { Key } from '../utils/constants'
 
 const editorWithValue = value => new Editor({
@@ -143,7 +143,7 @@ describe('SuggestionPortal', () => {
         })
         const { callback: { suggestion } } = instance.props
         instance.onKeyDown({ ...event, keyCode: Key.ENTER }, nEditor, next)
-        expect(nEditor.currentText().text).toEqual(suggestion)
+        expect(currentText(nEditor).text).toEqual(suggestion)
       })
     })
 
@@ -155,7 +155,7 @@ describe('SuggestionPortal', () => {
         })
         const { callback: { suggestion } } = instance.props
         instance.onKeyDown({ ...event, keyCode: Key.TAB }, nEditor, next)
-        expect(nEditor.currentText().text).toEqual(suggestion)
+        expect(currentText(nEditor).text).toEqual(suggestion)
       })
     })
   })
