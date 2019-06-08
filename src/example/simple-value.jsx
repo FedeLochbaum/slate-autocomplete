@@ -1,7 +1,7 @@
 /** @jsx h */
 
 import h from 'slate-hyperscript'
-import { NODE_TYPES } from '../src/utils/slate-utils'
+import { NODE_TYPES } from '../utils/slate-utils'
 
 const initialValue = (
   <value>

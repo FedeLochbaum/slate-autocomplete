@@ -2,8 +2,28 @@ import React from 'react'
 import Portal from './suggestion-portal'
 import { mount } from 'enzyme'
 import { Value, Editor } from 'slate'
-import { replaceCurrentText, currentText } from '../utils/slate-utils'
+import { replaceCurrentText, currentText, OBJECT_TYPES, NODE_TYPES } from '../utils/slate-utils'
 import { Key } from '../utils/constants'
+
+const simpleValueWithText = text => ({
+  object: OBJECT_TYPES.value,
+  isVoid: false,
+  document: {
+    object: OBJECT_TYPES.document,
+    nodes: [
+      {
+        object: OBJECT_TYPES.block,
+        type: NODE_TYPES.BLOCK1,
+        nodes: [
+          {
+            object: OBJECT_TYPES.text,
+            leaves: [{ object: OBJECT_TYPES.leaf, text, marks: [] }]
+          }
+        ]
+      }
+    ]
+  }
+})
 
 const editorWithValue = value => new Editor({
   onChange: jest.fn(),
@@ -17,7 +37,7 @@ describe('SuggestionPortal', () => {
   }
 
   const state = Value.fromJSON({})
-  const editor = editorWithValue({})
+  const editor = editorWithValue(simpleValueWithText(''))
   const callback = { onEnter, editor }
   const suggestions = ['one', 'two', 'three']
   const shouldHandleNode = () => true
@@ -41,7 +61,7 @@ describe('SuggestionPortal', () => {
 
   describe('#getFilteredSuggestions', () => {
     const instance = wrapped.instance()
-    const nEditor = editorWithValue('tw')
+    const nEditor = editorWithValue(simpleValueWithText('tw'))
     it('should return an array of new suggestions', () => {
       expect(instance.getFilteredSuggestions(nEditor)).toEqual(['two'])
     })
@@ -93,17 +113,17 @@ describe('SuggestionPortal', () => {
   })
 
   describe('#matchTrigger', () => {
-    describe('when the current node is a actor name', () => {
+    describe('when have the current node matches', () => {
       const instance = wrapped.instance()
       it('should return true', () => {
         expect(instance.matchTrigger()).toEqual(true)
       })
     })
 
-    describe('when the current node is not a actor name', () => {
+    describe('when the current node does not matches', () => {
       it('should return false', () => {
-        const newState = Value.fromJSON({})
-        const newWrapped = mount(<Portal {...props} />)
+        const newEditor = editorWithValue(Value.fromJSON({}))
+        const newWrapped = mount(<Portal {...props} callback={{...props.callback, editor: newEditor }} />)
         const instance = newWrapped.instance()
         expect(instance.matchTrigger()).toEqual(false)
       })
@@ -141,9 +161,9 @@ describe('SuggestionPortal', () => {
           filteredSuggestions: suggestions,
           selectedIndex: 0,
         })
-        const { callback: { suggestion } } = instance.props
-        instance.onKeyDown({ ...event, keyCode: Key.ENTER }, nEditor, next)
-        expect(currentText(nEditor).text).toEqual(suggestion)
+        const { callback: { suggestion, editor: editor2 } } = instance.props
+        instance.onKeyDown({ ...event, keyCode: Key.ENTER }, editor2, next)
+        expect(currentText(editor2).text).toEqual(suggestion)
       })
     })
 
@@ -153,9 +173,9 @@ describe('SuggestionPortal', () => {
           filteredSuggestions: suggestions,
           selectedIndex: 0,
         })
-        const { callback: { suggestion } } = instance.props
-        instance.onKeyDown({ ...event, keyCode: Key.TAB }, nEditor, next)
-        expect(currentText(nEditor).text).toEqual(suggestion)
+        const { callback: { suggestion, editor: editor2 } } = instance.props
+        instance.onKeyDown({ ...event, keyCode: Key.TAB }, editor2, next)
+        expect(currentText(editor2).text).toEqual(suggestion)
       })
     })
   })

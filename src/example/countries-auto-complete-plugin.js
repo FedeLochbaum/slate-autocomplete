@@ -1,5 +1,5 @@
-import AutocompletePlugin from '../src/auto-complete'
-import { replaceCurrentText } from '../src/utils/slate-utils'
+import AutocompletePlugin from '../auto-complete'
+import { replaceCurrentText } from '../utils/slate-utils'
 
 const suggestions = [
   "Afganistán",

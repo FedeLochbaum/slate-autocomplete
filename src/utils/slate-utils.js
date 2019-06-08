@@ -17,3 +17,12 @@ export const NODE_TYPES = {
   BLOCK1: 'block1',
   BLOCK2: 'block2'
 }
+
+export const OBJECT_TYPES = {
+  block: 'block',
+  inline: 'inline',
+  text: 'text',
+  leaf: 'leaf',
+  document: 'document',
+  value: 'value',
+}

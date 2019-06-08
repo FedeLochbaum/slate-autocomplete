@@ -7,7 +7,7 @@ import position from '../utils/caret-position'
 import SuggestionItem from './suggestion-item'
 
 import styles from './suggestion-portal.scss'
-import { currentPath, currentText } from '../utils/slate-utils.js'
+import { currentPath, currentText, currentNode } from '../utils/slate-utils.js'
 
 const VISIBLE = 'visible'
 const HIDDEN = 'hidden'
@@ -106,7 +106,7 @@ class SuggestionPortal extends Component {
 
   matchTrigger = () => {
     const { callback: { editor }, shouldHandleNode } = this.props
-    return !isEmptyObject(editor) && !isEmptyObject(currentPath(editor)) && shouldHandleNode(editor, editor.currentBlock())
+    return !isEmptyObject(editor) && !isEmptyObject(currentPath(editor)) && shouldHandleNode(editor, currentNode(editor))
   }
 
   isOpen = () => this.contentRef.current.style.visibility === VISIBLE
