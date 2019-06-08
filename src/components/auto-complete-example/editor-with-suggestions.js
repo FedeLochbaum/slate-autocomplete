@@ -1,9 +1,9 @@
 import React from 'react'
 import { Editor } from 'slate'
+import countriesAutoCompletePlugin from '../../example/countries-auto-complete-plugin'
 import { compose, withState, withHandlers } from 'recompose'
-import { handlers } from '../example/handlers'
+import { handlers } from '../../example/handlers'
 import { prop } from 'ramda'
-import countriesAutoCompletePlugin from '../example/countries-auto-complete-plugin'
 
 const plugins = [countriesAutoCompletePlugin]
 

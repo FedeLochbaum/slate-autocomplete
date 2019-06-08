@@ -3,7 +3,7 @@
 import h from 'slate-hyperscript'
 import { NODE_TYPES } from '../utils/slate-utils'
 
-const initialValue = (
+export default (
   <value>
     <document>
       <block type={NODE_TYPES.BLOCK1}>
@@ -15,5 +15,3 @@ const initialValue = (
     </document>
   </value>
 )
-
-export default initialValue
