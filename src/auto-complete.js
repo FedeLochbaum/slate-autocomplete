@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React from 'react'
 import Portal from './components/suggestion-portal'
 import { currentNode, currentPath } from './utils/slate-utils'
@@ -33,6 +34,7 @@ const autocompletePluginCreator = opts => {
   }
 
   return {
+    onChange,
     shouldNodeComponentUpdate,
     onKeyDown,
     component: props => (

@@ -1,4 +1,4 @@
-import { equals, toUpper, pipe, path, when, split, test, last, dropLast, match, map } from 'ramda'
+import { pipe, when, split, test } from 'ramda'
 
 import { toArray } from './object'
 import escapeStringRegEx from 'escape-string-regexp'
