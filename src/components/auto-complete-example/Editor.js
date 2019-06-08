@@ -1,21 +1,18 @@
 import React from 'react'
 import { Editor } from 'slate'
 import countriesAutoCompletePlugin from '../../example/countries-auto-complete-plugin'
-import { compose, withState, withHandlers } from 'recompose'
 import { handlers } from '../../example/handlers'
-import { prop } from 'ramda'
+import initialValue from '../../example/simple-value'
 
 const plugins = [countriesAutoCompletePlugin]
 
-const Example = ({ value, onChange }) => (
+export default () => (
   <React.Fragment>
     <Editor
-      value={value}
+      value={initialValue}
       plugins={plugins}
-      onChange={onChange}
+      handlers={handlers}
     />
     {plugins.filter(({ component }) => !!component).map(({ component: Comp }, index) => <Comp key={index} />)}
   </React.Fragment>
 )
-
-export default compose(withState('value', 'setValue', prop('value')), withHandlers(handlers))(Example)
