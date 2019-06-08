@@ -1,6 +1,4 @@
-/* eslint-disable import/no-unresolved */
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { Editor } from 'slate'
 import { compose, withState, withHandlers } from 'recompose'
 import { handlers } from './handlers'
@@ -21,7 +19,3 @@ const Example = ({ value, onChange }) => (
 )
 
 export default compose(withState('value', 'setValue', prop('value')), withHandlers(handlers))(Example)
-
-const example = <Example />
-const root = document.body.querySelector('main')
-ReactDOM.render(example, root)
