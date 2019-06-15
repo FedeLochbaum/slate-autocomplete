@@ -1,5 +1,5 @@
 import React from 'react'
-import { Editor } from 'slate'
+import { Editor } from 'slate-react'
 import { compose, withState, withHandlers } from 'recompose'
 import { handlers } from './handlers'
 import { Value } from 'slate'
@@ -18,4 +18,6 @@ const Example = ({ value, onChange }) => (
   </React.Fragment>
 )
 
-export default compose(withState('value', 'setValue', ({ object }) => Value.fromJSON(object)), withHandlers(handlers))(Example)
+export default compose(
+  withState('value', 'setValue', ({ object }) => Value.fromJSON(object)),
+  withHandlers(handlers))(Example)
