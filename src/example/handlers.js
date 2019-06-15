@@ -1,5 +1,6 @@
 import React from 'react'
-import { Block1 } from '../components/Block1/Block1'
+import Block from '../components/Block/Block'
+import { NODE_TYPES } from '../utils/slate-utils'
 
 export const handlers = {
   onChange: ({ setValue, onChange }) => ({ value }) => {
@@ -14,5 +15,5 @@ export const handlers = {
 }
 
 const componentsByNodeType = {
-  block1: Block1
+  [NODE_TYPES.BLOCK1]: Block
 }

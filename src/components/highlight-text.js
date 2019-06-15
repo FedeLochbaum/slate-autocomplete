@@ -3,12 +3,12 @@ import { compose, withProps } from 'recompose'
 import classNames from 'classnames'
 import { splitMatching } from '../utils/string'
 
-import styles from './highlight-text.scss'
+import './highlight-text.css'
 
 const HighlightText = ({ tokens }) => (tokens ? (
   <div>
     {tokens.map((part, i) => (
-      <span key={i} className={classNames({ [styles.matchingToken]: part.isMatch })} >{part.token}</span>
+      <span key={i} className={classNames({ 'matchingToken': part.isMatch })} >{part.token}</span>
     ))}
   </div>
 ) : null)

@@ -1,3 +1,5 @@
+import { NODE_TYPES, OBJECT_TYPES } from "../utils/slate-utils"
+
 export default {
   object: 'value',
   isVoid: false,
@@ -5,8 +7,8 @@ export default {
     object: 'document',
     nodes: [
       {
-        object: 'block',
-        type: 'block1',
+        object: OBJECT_TYPES.block,
+        type: NODE_TYPES.BLOCK1,
         nodes: [
           {
             object: 'text',

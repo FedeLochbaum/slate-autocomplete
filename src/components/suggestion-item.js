@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import HighlightText from './highlight-text'
-import styles from './suggestion-item.scss'
+import './suggestion-item.css'
 import { currentPath, currentText } from '../utils/slate-utils'
 
 class SuggestionItem extends Component {
@@ -25,7 +25,7 @@ class SuggestionItem extends Component {
     const { index, selectedIndex, suggestion } = this.props
     return (
       <li
-        className={index === selectedIndex ? styles.selected : undefined}
+        className={index === selectedIndex ? 'selected' : undefined}
         onClick={this.onClick}
         onMouseEnter={this.onMouseEnter}
       >
