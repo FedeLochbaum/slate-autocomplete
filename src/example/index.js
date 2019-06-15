@@ -7,12 +7,13 @@ import countriesAutoCompletePlugin from './countries-auto-complete-plugin'
 
 const plugins = [countriesAutoCompletePlugin]
 
-const Example = ({ value, onChange }) => (
+const Example = ({ value, onChange, renderNode }) => (
   <React.Fragment>
     <Editor
       value={value}
       plugins={plugins}
       onChange={onChange}
+      renderNode={renderNode}
     />
     {plugins.filter(({ component }) => !!component).map(({ component: Comp }, index) => <Comp key={index} />)}
   </React.Fragment>
