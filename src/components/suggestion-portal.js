@@ -6,7 +6,7 @@ import { Key } from '../utils/constants'
 import position from '../utils/caret-position'
 import SuggestionItem from './suggestion-item'
 
-import styles from './suggestion-portal.scss'
+import './suggestion-portal.css'
 import { currentPath, currentText, currentNode } from '../utils/slate-utils.js'
 
 const VISIBLE = 'visible'
@@ -138,7 +138,7 @@ class SuggestionPortal extends Component {
     const { filteredSuggestions, selectedIndex } = this.state
     return (
       <Portal isOpened>
-        <div ref={this.contentRef} className={styles.suggestionPortal}>
+        <div ref={this.contentRef} className={'suggestionPortal'}>
           <ul>
             {filteredSuggestions.map((suggestion, index) =>
               (<SuggestionItem

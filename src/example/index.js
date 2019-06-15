@@ -1,27 +1,24 @@
-/* eslint-disable import/no-unresolved */
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { Editor } from 'slate'
+import { Editor } from 'slate-react'
 import { compose, withState, withHandlers } from 'recompose'
 import { handlers } from './handlers'
-import { prop } from 'ramda'
+import { Value } from 'slate'
 import countriesAutoCompletePlugin from './countries-auto-complete-plugin'
 
 const plugins = [countriesAutoCompletePlugin]
 
-const Example = ({ value, onChange }) => (
+const Example = ({ value, onChange, renderNode }) => (
   <React.Fragment>
     <Editor
       value={value}
       plugins={plugins}
       onChange={onChange}
+      renderNode={renderNode}
     />
     {plugins.filter(({ component }) => !!component).map(({ component: Comp }, index) => <Comp key={index} />)}
   </React.Fragment>
 )
 
-export default compose(withState('value', 'setValue', prop('value')), withHandlers(handlers))(Example)
-
-const example = <Example />
-const root = document.body.querySelector('main')
-ReactDOM.render(example, root)
+export default compose(
+  withState('value', 'setValue', ({ object }) => Value.fromJSON(object)),
+  withHandlers(handlers))(Example)
