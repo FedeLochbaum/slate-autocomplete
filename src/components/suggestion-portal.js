@@ -7,7 +7,7 @@ import position from '../utils/caret-position'
 import SuggestionItem from './suggestion-item'
 
 import './suggestion-portal.css'
-import { currentPath, currentText, currentNode } from '../utils/slate-utils.js'
+import { currentPath, currentText, currentNode, currentWord } from '../utils/slate-utils.js'
 
 const VISIBLE = 'visible'
 const HIDDEN = 'hidden'
@@ -97,8 +97,9 @@ class SuggestionPortal extends Component {
   }
 
   getFilteredSuggestions = editor => {
-    const { callback: { resultSize }, suggestions, filterSuggestions } = this.props
-    const lowerCaseWord = currentText(editor).text.toLowerCase()
+    const { callback: { resultSize }, suggestions, filterSuggestions, totalText } = this.props
+
+    const lowerCaseWord = (totalText ? currentText(editor).text : currentWord(editor)).toLowerCase()
 
     const currentSuggestions = (suggestions.filter(suggestion => suggestion.toLowerCase().indexOf(lowerCaseWord) !== -1 && suggestion.toLowerCase() !== lowerCaseWord))
     return (filterSuggestions ? filterSuggestions(currentSuggestions) : currentSuggestions).slice(0, resultSize)
@@ -143,6 +144,7 @@ class SuggestionPortal extends Component {
             {filteredSuggestions.map((suggestion, index) =>
               (<SuggestionItem
                 key={suggestion}
+                totalText={this.props.totalText}
                 index={index}
                 suggestion={suggestion}
                 selectedIndex={selectedIndex}

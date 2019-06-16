@@ -43,6 +43,7 @@ const suggestions = [
 export default autoCompletePlugin({
   suggestions,
   resultSize: 5,
+  totalText: true,
   shouldHandleNode: (editor, currentNode) => true,
   onEnter: (suggestion, editor) => {
     replaceCurrentText(editor, suggestion)
@@ -61,6 +62,7 @@ export default autoCompletePlugin({
     </YourDynamicComp>
   ),
   shouldHandleNode: (editor, currentNode) => true,
+  totalText: false,
   onEnter: (suggestion, editor) => {
     replaceCurrentText(editor, suggestion)
   }
@@ -88,6 +90,7 @@ const Example = ({ value, onChange, renderNode }) => (
 Option | Type | Optional | Description
 --- | --- | --- | ---
 **`suggestions`** | `Array` | Yes | An array of suggestions.
+**`totalText`** | `Boolean` | Yes | A boolean used to kwow if the suggestions should be applied to complete node text or only to the current word.
 **`resultSize`** | `Number` | Yes | An optional number use to set size of suggestion result.
 **`renderPortal`** | `Function` | Yes | A function use to wrap the portal component with dynamics suggestions. 
 **`onEnter`** | `Function` | No | A function use to handle return/enter keypress to append suggestion into editor.
