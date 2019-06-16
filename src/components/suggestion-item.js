@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import HighlightText from './highlight-text'
 import './suggestion-item.css'
-import { currentPath, currentText } from '../utils/slate-utils'
+import { currentPath, currentText, currentWord } from '../utils/slate-utils'
 
 class SuggestionItem extends Component {
   onClick = event => {
@@ -17,8 +17,8 @@ class SuggestionItem extends Component {
   onMouseEnter = () => this.props.setSelectedIndex(this.props.index)
 
   currentText = () => {
-    const { callback: { editor } } = this.props
-    return editor && currentPath(editor) ? currentText(editor).text : ''
+    const { callback: { editor }, totalText } = this.props
+    return editor && currentPath(editor) ? totalText ? currentText(editor).text : currentWord(editor) : ''
   }
 
   render = () => {
