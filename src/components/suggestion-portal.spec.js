@@ -39,10 +39,12 @@ describe('SuggestionPortal', () => {
   const state = Value.fromJSON({})
   const editor = editorWithValue(simpleValueWithText(''))
   const callback = { onEnter, editor }
+  const totalText = true
   const suggestions = ['one', 'two', 'three']
   const shouldHandleNode = () => true
   const props = {
     callback,
+    totalText,
     suggestions,
     shouldHandleNode,
     state,
