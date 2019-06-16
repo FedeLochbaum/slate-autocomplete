@@ -4,7 +4,7 @@
     "react"
   ],
   "settings": {
-    "import/extensions": [".js"]
+    "import/extensions": [".js", ".jsx"]
   },
   "parser": "babel-eslint",
   "parserOptions": {
@@ -15,7 +15,8 @@
   "env": {
     "browser": true,
     "mocha": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "rules": {
     "block-spacing": "error",
@@ -28,7 +29,6 @@
     "dot-location": ["error", "property"],
     "dot-notation": ["error", { "allowKeywords": true }],
     "eol-last": "error",
-    "func-style": ["error", "declaration"],
     "import/export": "error",
     "import/namespace": "error",
     "import/newline-after-import": "error",
@@ -109,7 +109,6 @@
     "react/react-in-jsx-scope": "error",
     "react/self-closing-comp": "error",
     "react/sort-prop-types": "error",
-    "react/wrap-multilines": "error",
     "rest-spread-spacing": ["error", "never"],
     "semi": ["error", "never"],
     "space-before-blocks": "error",
@@ -124,6 +123,6 @@
     "valid-jsdoc": ["error", { "prefer": { "return": "returns" }, "requireReturn": false }],
     "valid-typeof": "error",
     "yield-star-spacing": ["error", "after"],
-    "yoda": ["error", "never"]
+    "yoda": ["error", "never"],
   }
 }

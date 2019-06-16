@@ -1,16 +1,24 @@
 
-<h3 align="center"><code>slate-suggestions</code></h3>
+<h3 align="center"><code>slate-autocomplete</code></h3>
 
-A [**Slate**](https://github.com/ianstormtaylor/slate) plugin to suggestion replacements or actions based on input. Useful for implementing "mention" or other suggestion based behaviors.
+A [**Slate**](https://github.com/ianstormtaylor/slate) plugin to suggestion replacements or actions based on input. Useful for implementing autocomplete suggestions by node type.
 
-![](./example/demo.gif)
+<p align="center"><img src="./demo.gif"></p>
 
 ---
 
 ### Install
 
+With npm:
+
 ```
-npm install --save slate-suggestions
+npm install --save slate-autocomplete
+```
+
+With yarn:
+
+```
+yarn add slate-autocomplete
 ```
 
 _You will need to have installed `slate` as a dependency already._
@@ -19,56 +27,74 @@ _You will need to have installed `slate` as a dependency already._
 
 ### Usage
 
+### Define your custom plugin:
+
+#### With static suggestions:
 ```js
-import SuggestionsPlugin from 'slate-suggestions'
-import { Editor } from 'slate'
+import autoCompletePlugin from 'slate-autocomplete'
 
 const suggestions = [
-  {
-    key: 'jon-snow',
-    value: '@Jon Snow',
-    suggestion: '@Jon Snow' // Can be string or react component
-  },
-  // Some other suggestions
+  "Afganistán",
+  "Albania",
+  "Argentina",
+  ...
 ]
 
-const suggestionsPlugin = SuggestionsPlugin({
-  trigger: '@',
-  capture: /@([\w]*)/,
+export default autoCompletePlugin({
   suggestions,
-  onEnter: (suggestion) => {
-    // Modify your state up to your use-cases
-    return modifiedState
+  resultSize: 5,
+  totalText: true,
+  shouldHandleNode: (editor, currentNode) => true,
+  onEnter: (suggestion, editor) => {
+    replaceCurrentText(editor, suggestion)
   }
 })
-
-// Extract portal component from the plugin
-const { SuggestionPortal } = suggestionPlugin
-
-// Add the plugin to your set of plugins...
-const plugins = [
-  suggestionPlugin
-]
-
-// And later pass it into the Slate editor...
-<Editor
-  ...
-  plugins={plugins}
-/>
-// And add portal component together with the editor
-<SuggestionPortal
-  state={this.state.state}
-/>
 ```
 
-Option | Type | Description
---- | --- | ---
-**`trigger`** | `String` | The trigger to match the inputed character, use to open the portal.
-**`capture`** | `RegExp` | A regexp that must match the text after the trigger to keep the portal open and extract the text to filter suggestions.
-**`suggestions`** | `Array` | An array of suggestions object which have the following keys `key`, `value` and `suggestion`. `suggestion` can be string or react component.
-**`onEnter`** | `Function` | A function use to handle return/enter keypress to append suggestion into editor.
-**`startOfParagraph`** | `Bool` | An optional flag that use to check that portal will trigger only when trigger string is at the start of paragraph.
-**`resultSize`** | `Number` | An optional number use to set size of suggestion result. Default is 5.
+#### With dynamic suggestions:
+```js
+import autoCompletePlugin from 'slate-autocomplete'
+
+export default autoCompletePlugin({
+  renderPortal: (Portal, props) => (
+    <YourDynamicComp>
+      {names => (<Portal {...props} suggestions={names} />)}
+    </YourDynamicComp>
+  ),
+  shouldHandleNode: (editor, currentNode) => true,
+  totalText: false,
+  onEnter: (suggestion, editor) => {
+    replaceCurrentText(editor, suggestion)
+  }
+})
+```
+#### In this case, you need define `renderPortal` instead of `suggestions`.
+
+```js
+import customPlugin from 'your_plugin_path'
+import { Editor } from 'slate-react'
+
+const Example = ({ value, onChange, renderNode }) => (
+  <React.Fragment>
+    <Editor
+      value={value}
+      plugins={[customPlugin]}
+      onChange={onChange}
+      renderNode={renderNode}
+    />
+    {plugins.filter(({ component }) => !!component).map(({ component: Comp }, index) => <Comp key={index} />)}
+  </React.Fragment>
+)
+```
+
+Option | Type | Optional | Description
+--- | --- | --- | ---
+**`suggestions`** | `Array` | Yes | An array of suggestions.
+**`totalText`** | `Boolean` | Yes | A boolean used to kwow if the suggestions should be applied to complete node text or only to the current word.
+**`resultSize`** | `Number` | Yes | An optional number use to set size of suggestion result.
+**`renderPortal`** | `Function` | Yes | A function use to wrap the portal component with dynamics suggestions. 
+**`onEnter`** | `Function` | No | A function use to handle return/enter keypress to append suggestion into editor.
+**`shouldHandleNode`** | `Function` | No | A function use to know if the current slate node should be handled.
 
 ---
 
@@ -77,24 +103,16 @@ Option | Type | Description
 Clone the repository and then run:
 
 ```
-npm install
-npm run watch
+yarn
+yarn storybook
 ```
 
 And open the example page in your browser:
 
 ```
-http://localhost:8888/
+http://localhost:6006/
 ```
 
----
+You should see something like:
 
-### License
-
-Copyright &copy; 2016, [Oozou](http://oozou.com)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+<p align="center"><img src="./storybook.gif"></p>
