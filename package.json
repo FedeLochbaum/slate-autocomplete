@@ -83,5 +83,5 @@
     "url": "https://github.com/FedeLochbaum/slate-autocomplete/issues"
   },
   "homepage": "https://github.com/FedeLochbaum/slate-autocomplete/#readme",
-  "main": "auto-complete.js"
+  "main": "src/auto-complete.js"
 }
