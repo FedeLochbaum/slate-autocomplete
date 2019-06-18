@@ -32,22 +32,22 @@
     ]
   },
   "dependencies": {
-    "classnames": "^2.2.6",
-    "enzyme": "^3.10.0",
-    "escape-string-regexp": "^2.0.0",
-    "immutable": "^4.0.0-rc.12",
-    "node-sass": "^4.12.0",
+    "recompose": "^0.30.0",
     "ramda": "^0.26.1",
+    "classnames": "^2.2.6",
+    "immutable": "^4.0.0-rc.12",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-portal": "^4.2.0",
-    "react-scripts": "3.0.1",
-    "react-test-renderer": "^16.8.6",
-    "recompose": "^0.30.0",
     "slate": "0.44.12",
-    "slate-react": "^0.21.18"
+    "node-sass": "^4.12.0"
   },
   "devDependencies": {
+    "escape-string-regexp": "^2.0.0",
+    "react-test-renderer": "^16.8.6",
+    "slate-react": "^0.21.18",
+    "react-scripts": "3.0.1",
+    "enzyme": "^3.10.0",
     "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-decorators": "^7.4.4",
     "@babel/plugin-proposal-do-expressions": "^7.2.0",
