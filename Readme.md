@@ -107,12 +107,13 @@ yarn
 yarn storybook
 ```
 
-And open the example page in your browser:
-
-```
-http://localhost:6006/
-```
-
 You should see something like:
 
 <p align="center"><img src="./storybook.gif"></p>
+
+
+
+### Collaboration
+
+If you have some idea/suggestion or you found an error, please, let me know sending me an email: federico.lochbaum@gmail.com or creating a new issue.
+
