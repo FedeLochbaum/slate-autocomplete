@@ -17,7 +17,7 @@ const simpleValueWithText = text => ({
         nodes: [
           {
             object: OBJECT_TYPES.text,
-            leaves: [{ object: OBJECT_TYPES.leaf, text, marks: [] }]
+            text
           }
         ]
       }
