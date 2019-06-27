@@ -9,8 +9,8 @@ import SuggestionItem from './suggestion-item'
 import './suggestion-portal.css'
 import { currentPath, currentText, currentNode, currentWord } from '../utils/slate-utils.js'
 
-const VISIBLE = 'visible'
-const HIDDEN = 'hidden'
+const BLOCK = 'block'
+const NONE = 'none'
 
 const isSelectKey = keyCode => keyCode === Key.ENTER || keyCode === Key.TAB
 
@@ -110,7 +110,7 @@ class SuggestionPortal extends Component {
     return !isEmptyObject(editor) && !isEmptyObject(currentPath(editor)) && shouldHandleNode(editor, currentNode(editor))
   }
 
-  isOpen = () => this.contentRef.current.style.visibility === VISIBLE
+  isOpen = () => this.contentRef.current.style.display === BLOCK
 
   adjustPosition = () => {
     const menu = this.contentRef.current
@@ -128,11 +128,11 @@ class SuggestionPortal extends Component {
   }
   openPortal = () => {
     const menu = this.contentRef.current
-    menu.style.visibility = VISIBLE
+    menu.style.display = BLOCK
   }
   closePortal = () => {
     const menu = this.contentRef.current
-    menu.style.visibility = HIDDEN
+    menu.style.display = NONE
   }
 
   render = () => {

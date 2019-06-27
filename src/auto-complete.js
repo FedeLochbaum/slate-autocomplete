@@ -25,6 +25,7 @@ const autocompletePluginCreator = opts => {
   const onKeyDown = (event, editor, next) => {
     const { closePortal, isOpen } = callback
     if (matchTrigger(editor, shouldHandleNode)) {
+      callback.updateFilteredSuggestion(editor)
       return callback.onKeyDown(event, editor, next)
     } else if (isOpen()) {
       closePortal()
