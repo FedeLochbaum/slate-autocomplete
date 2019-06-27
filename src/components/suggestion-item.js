@@ -25,7 +25,7 @@ class SuggestionItem extends Component {
     const { index, selectedIndex, suggestion } = this.props
     return (
       <li
-        className={index === selectedIndex ? 'selected' : undefined}
+        className={index === selectedIndex ? 'selected' : 'input'}
         onClick={this.onClick}
         onMouseEnter={this.onMouseEnter}
       >
