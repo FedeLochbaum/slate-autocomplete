@@ -67,7 +67,8 @@ export const replaceCurrentWord = (editor, suggestion) => {
 
 export const NODE_TYPES = {
   BLOCK1: 'block1',
-  BLOCK2: 'block2'
+  BLOCK2: 'block2',
+  TITLE: 'title'
 }
 
 export const OBJECT_TYPES = {

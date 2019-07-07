@@ -1,5 +1,6 @@
 import React from 'react'
 import Block from '../components/Block/Block'
+import Title from '../components/Title/Title'
 import { NODE_TYPES } from '../utils/slate-utils'
 
 export const handlers = {
@@ -15,5 +16,6 @@ export const handlers = {
 }
 
 const componentsByNodeType = {
-  [NODE_TYPES.BLOCK1]: Block
+  [NODE_TYPES.BLOCK1]: Block,
+  [NODE_TYPES.TITLE]: Title,
 }
