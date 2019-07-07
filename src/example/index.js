@@ -3,13 +3,12 @@ import { Editor } from 'slate-react'
 import { compose, withState, withHandlers } from 'recompose'
 import { handlers } from './handlers'
 import { Value } from 'slate'
-import countriesAutoCompletePlugin from './countries-auto-complete-plugin'
+import './editor.css'
 
-const plugins = [countriesAutoCompletePlugin]
-
-const Example = ({ value, onChange, renderNode }) => (
+const Example = ({ plugins, value, onChange, renderNode }) => (
   <React.Fragment>
     <Editor
+      className="editor"
       value={value}
       plugins={plugins}
       onChange={onChange}

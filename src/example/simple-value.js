@@ -12,7 +12,7 @@ export default {
         nodes: [
           {
             object: 'text',
-            leaves: [{ object: 'leaf', text: '', marks: [] }]
+            text: 'hi'
           }
         ]
       }

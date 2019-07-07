@@ -22,6 +22,49 @@ export const replaceCurrentText = (editor, textValue) => {
   editor.insertText(textValue)
 }
 
+const expandSelectionLeftWhile = (editor, func) => {
+  while (func() && editor.value.selection.start.offset > 0) {
+    editor.moveStartTo(editor.value.selection.start.offset - 1)
+  }
+}
+
+const expandSelectionRightWhile = (editor, func) => {
+  const { text } = currentText(editor)
+  while (func() && editor.value.selection.end.offset < text.length) {
+    editor.moveEndTo(editor.value.selection.end.offset + 1)
+  }
+}
+
+export const expandStartToNextSpace = editor => {
+  const func = () => {
+    const { text } = currentText(editor)
+    const { offset } = editor.value.selection.start
+    return text[offset] !== ' '
+  }
+  expandSelectionLeftWhile(editor, func)
+  const { offset: currentOffset } = editor.value.selection.start
+  if (currentOffset !== 0) { editor.moveStartTo(currentOffset + 1) }
+}
+
+export const expandEndToNextSpace = editor => {
+  const func = () => {
+    const { text } = currentText(editor)
+    const { offset } = editor.value.selection.end
+    return text[offset] !== ' '
+  }
+  expandSelectionRightWhile(editor, func)
+}
+
+export const expandSelectionToSpaces = editor => {
+  expandStartToNextSpace(editor)
+  expandEndToNextSpace(editor)
+}
+
+export const replaceCurrentWord = (editor, suggestion) => {
+  expandSelectionToSpaces(editor)
+  editor.insertText(suggestion)
+}
+
 export const NODE_TYPES = {
   BLOCK1: 'block1',
   BLOCK2: 'block2'
