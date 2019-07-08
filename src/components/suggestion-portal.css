@@ -1,5 +1,5 @@
 .suggestionPortal {
-  display: none;
+  visibility: hidden;
   position: absolute;
   z-index: 10;
   width: 200px;

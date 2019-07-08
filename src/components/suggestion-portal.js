@@ -11,6 +11,8 @@ import { currentPath, currentText, currentNode, currentWord } from '../utils/sla
 
 const BLOCK = 'block'
 const NONE = 'none'
+const VISIBLE = 'visible'
+const HIDDEN = 'hidden'
 
 const isSelectKey = keyCode => keyCode === Key.ENTER || keyCode === Key.TAB
 
@@ -78,6 +80,12 @@ class SuggestionPortal extends Component {
     const { callback: { suggestion, onEnter } } = this.props
     const { filteredSuggestions } = this.state
 
+    if (this.isOpen() && keyCode === Key.ESC) {
+        event.preventDefault()
+        this.closePortal()
+        return next()
+    }
+
     if (this.isOpen() && !isEmpty(filteredSuggestions)) {
       if (keyCode === Key.DOWN) {
         event.preventDefault()
@@ -110,7 +118,7 @@ class SuggestionPortal extends Component {
     return !isEmptyObject(editor) && !isEmptyObject(currentPath(editor)) && shouldHandleNode(editor, currentNode(editor))
   }
 
-  isOpen = () => this.contentRef.current.style.display === BLOCK
+  isOpen = () => this.contentRef.current.style.visibility === VISIBLE
 
   adjustPosition = () => {
     const menu = this.contentRef.current
@@ -128,11 +136,11 @@ class SuggestionPortal extends Component {
   }
   openPortal = () => {
     const menu = this.contentRef.current
-    menu.style.display = BLOCK
+    menu.style.visibility = VISIBLE
   }
   closePortal = () => {
     const menu = this.contentRef.current
-    menu.style.display = NONE
+    menu.style.visibility = HIDDEN
   }
 
   render = () => {
