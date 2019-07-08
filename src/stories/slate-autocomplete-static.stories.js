@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react'
 import simpleValue from '../example/simple-value'
 import countriesAutoCompletePlugin from './../example/countries-auto-complete-plugin'
 import AutocompletePlugin from '../auto-complete'
-import { replaceCurrentWord, replaceCurrentText, NODE_TYPES, OBJECT_TYPES } from '../utils/slate-utils'
+import { replaceCurrentWord, replaceCurrentText, NODE_TYPES, OBJECT_TYPES, currentText } from '../utils/slate-utils'
 
 const titleValue = {
   object: 'value',
@@ -21,22 +21,12 @@ const titleValue = {
             text: 'Title'
           }
         ]
-      },
-      {
-        object: OBJECT_TYPES.block,
-        type: NODE_TYPES.BLOCK1,
-        nodes: [
-          {
-            object: 'text',
-            text: 'hi'
-          }
-        ]
       }
     ]
   }
 }
 
-storiesOf('Slate Autocomplete', module)
+storiesOf('Slate Static autocomplete', module)
   .add('A simple countries autocomplete', () =>
     <Editor
     object={simpleValue}

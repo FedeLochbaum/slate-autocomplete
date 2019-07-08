@@ -80,6 +80,12 @@ class SuggestionPortal extends Component {
     const { callback: { suggestion, onEnter } } = this.props
     const { filteredSuggestions } = this.state
 
+    if (this.isOpen() && keyCode === Key.ESC) {
+        event.preventDefault()
+        this.closePortal()
+        return next()
+    }
+
     if (this.isOpen() && !isEmpty(filteredSuggestions)) {
       if (keyCode === Key.DOWN) {
         event.preventDefault()
@@ -87,10 +93,6 @@ class SuggestionPortal extends Component {
       } else if (keyCode === Key.UP) {
         event.preventDefault()
         this.updateSelection(this.nextUpIndex())
-      } else if (keyCode === Key.ESC) {
-        event.preventDefault()
-        this.closePortal()
-        return false
       } else if (isSelectKey(keyCode)) {
         event.preventDefault()
         this.closePortal()
