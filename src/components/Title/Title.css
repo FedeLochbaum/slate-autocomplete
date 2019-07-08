@@ -1,0 +1,10 @@
+.Title {
+  margin: 5rem;
+  align-self: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  color: rgb(226, 134, 73);
+  font-style: oblique;
+  font-family: "Courier Prime", Courier, monospace;
+}

@@ -1,0 +1,10 @@
+.editor {
+  margin: 2rem;
+  align-self: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  color: rgb(156, 156, 209);
+  font-style: italic;
+  font-family: "Courier Prime", Courier, monospace;
+}
