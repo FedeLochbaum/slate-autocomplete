@@ -12,7 +12,7 @@ export default {
         nodes: [
           {
             object: 'text',
-            text: 'hi'
+            text: 'Hello!'
           }
         ]
       }
